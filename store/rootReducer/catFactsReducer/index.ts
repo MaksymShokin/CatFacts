@@ -30,7 +30,7 @@ const factsSlice = createSlice({
     },
     saveFacts: (state, { payload }) => {
       state.isLoading = false
-      state.facts = [...payload, ...state.facts]
+      state.facts = [...state.facts, ...payload]
     }
   }
 })

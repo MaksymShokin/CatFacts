@@ -1,4 +1,4 @@
-import React, { useCallback, useState } from 'react'
+import React, { useCallback, useState, useEffect } from 'react'
 import { View, FlatList, Text, ActivityIndicator } from 'react-native'
 import { ScaledSheet } from 'react-native-size-matters'
 import { useSelector, useDispatch } from 'react-redux'
@@ -11,9 +11,9 @@ interface CatFactsTypes {
   isLoading: boolean
 }
 
-const ListHeaderComponent = ({ loadFacts, isLoading }: CatFactsTypes) => {
+const ListFooterComponent = ({ loadFacts, isLoading }: CatFactsTypes) => {
   return (
-    <View style={styles.listHeaderContainer}>
+    <View style={styles.listFooterContainer}>
       {isLoading ? (
         <ActivityIndicator />
       ) : (
@@ -50,6 +50,10 @@ const CatFactsScreen = () => {
     }
   }, [dispatch])
 
+  useEffect(() => {
+    loadFacts()
+  }, [loadFacts])
+
   return (
     <FlatList
       contentContainerStyle={styles.flatList}
@@ -58,22 +62,23 @@ const CatFactsScreen = () => {
         item._id + new Date()
       }
       renderItem={renderItem}
-      ListHeaderComponent={
-        <ListHeaderComponent loadFacts={loadFacts} isLoading={isLoading} />
+      ListFooterComponent={
+        <ListFooterComponent loadFacts={loadFacts} isLoading={isLoading} />
       }
     />
   )
 }
 
 const styles = ScaledSheet.create({
-  listHeaderContainer: {
+  listFooterContainer: {
     width: '100%',
     alignItems: 'center',
-    height: '120@ms',
+    height: '100@ms',
     justifyContent: 'center'
   },
   flatList: {
-    paddingBottom: '30@ms'
+    paddingTop: '30@ms',
+    paddingBottom: '10@ms'
   },
   catFactsItem: {
     marginVertical: '10@ms',
