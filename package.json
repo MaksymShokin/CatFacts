@@ -29,7 +29,18 @@
     "@types/react-redux": "^7.1.11",
     "eslint": "^7.13.0",
     "import-sort-style-wes": "^3.0.2",
+    "prettier-plugin-import-sort": "0.0.6",
     "typescript": "~3.9.5"
+  },
+  "importSort": {
+    ".js, .jsx": {
+      "parser": "babylon",
+      "style": "wes"
+    },
+    ".ts, .tsx": {
+      "parser": "typescript",
+      "style": "wes"
+    }
   },
   "private": true
 }

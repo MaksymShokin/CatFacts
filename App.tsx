@@ -2,7 +2,6 @@ import React from 'react'
 import { Provider } from 'react-redux'
 
 import CatFatsScreen from './screens/CatFactsScreen'
-
 import store from './store'
 
 const App = () => (

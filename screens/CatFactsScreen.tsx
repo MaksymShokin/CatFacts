@@ -1,10 +1,11 @@
-import React, { useCallback, useState, useEffect } from 'react'
-import { View, FlatList, Text, ActivityIndicator } from 'react-native'
+import React, { useCallback, useEffect, useState } from 'react'
+import { ActivityIndicator, FlatList, Text, View } from 'react-native'
 import { ScaledSheet } from 'react-native-size-matters'
-import { useSelector, useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
+
 import CustomButton from '../components/CustomButton'
-import { saveFacts, CatsRequest } from '../store/rootReducer/catFactsReducer'
 import { DefaultRootState } from '../store/rootReducer'
+import { CatsRequest, saveFacts } from '../store/rootReducer/catFactsReducer'
 
 interface CatFactsTypes {
   loadFacts: () => Promise<void>
